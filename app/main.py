@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import arena, role_arena, chat, ml, classroom
+from app.routers import arena, role_arena, chat, ml, classroom, tutors
 from app.services.deepgram_service import DeepgramService
 
 app = FastAPI(
@@ -23,6 +23,7 @@ app.include_router(role_arena.router)
 app.include_router(chat.router)
 app.include_router(ml.router)
 app.include_router(classroom.router)
+app.include_router(tutors.router)
 
 deepgram_service = DeepgramService()
 

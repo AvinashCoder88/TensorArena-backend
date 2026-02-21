@@ -11,7 +11,8 @@ grading_service = GradingService()
 docx_generator = DocxGenerator()
 
 # Ensure reports directory exists
-REPORTS_DIR = "app/static/reports"
+import tempfile
+REPORTS_DIR = os.path.join(tempfile.gettempdir(), "reports") if os.environ.get("VERCEL") else "app/static/reports"
 os.makedirs(REPORTS_DIR, exist_ok=True)
 
 @router.post("/classroom/grade_paper")

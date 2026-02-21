@@ -5,11 +5,12 @@ import json
 
 class GradingService:
     def __init__(self):
-        if os.getenv("GOOGLE_API_KEY"):
-            genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+        api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
+        if api_key:
+            genai.configure(api_key=api_key)
             self.model = genai.GenerativeModel('gemini-1.5-pro')
         else:
-            print("Warning: GOOGLE_API_KEY not found")
+            print("Warning: GEMINI_API_KEY or GOOGLE_API_KEY not found")
             self.model = None
 
     async def extract_question_paper(self, image_bytes: bytes, mime_type: str = "image/jpeg") -> Dict[str, Any]:

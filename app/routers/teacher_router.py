@@ -10,7 +10,8 @@ router = APIRouter(prefix="/teacher", tags=["teacher"])
 grading_service = GradingService()
 
 # Ensure upload directory exists
-UPLOADS_DIR = "app/static/uploads"
+import tempfile
+UPLOADS_DIR = os.path.join(tempfile.gettempdir(), "uploads") if os.environ.get("VERCEL") else "app/static/uploads"
 os.makedirs(UPLOADS_DIR, exist_ok=True)
 
 

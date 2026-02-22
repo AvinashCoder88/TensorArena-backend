@@ -1,0 +1,11 @@
+{
+  "id": "quiz_builder",
+  "steps": [
+    {
+      "id": "quiz_output",
+      "type": "llm_text",
+      "prompt": "quiz_builder.md"
+    }
+  ],
+  "output": "quiz_output"
+}

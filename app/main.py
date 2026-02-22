@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import arena, role_arena, chat, ml, classroom, tutors, teacher_router, integrations
+from app.routers import arena, role_arena, chat, ml, classroom, tutors, teacher_router, integrations, services
 from app.services.deepgram_service import DeepgramService
 
 app = FastAPI(
@@ -26,6 +26,7 @@ app.include_router(classroom.router)
 app.include_router(tutors.router)
 app.include_router(teacher_router.router)
 app.include_router(integrations.router)
+app.include_router(services.router)
 
 deepgram_service = DeepgramService()
 
@@ -40,4 +41,3 @@ async def health_check():
 @app.get("/deepgram/token")
 async def get_deepgram_token():
     return await deepgram_service.get_token()
-

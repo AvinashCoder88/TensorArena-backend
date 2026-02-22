@@ -1,0 +1,11 @@
+{
+  "id": "writing_coach",
+  "steps": [
+    {
+      "id": "writing_feedback",
+      "type": "llm_text",
+      "prompt": "writing_coach.md"
+    }
+  ],
+  "output": "writing_feedback"
+}
